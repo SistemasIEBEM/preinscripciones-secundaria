@@ -1,0 +1,38 @@
+<%-- 
+    Document   : login_admin
+    Created on : 10-ene-2017, 8:35:16
+    Author     : David Costet
+--%>
+
+<form class="form-signin" action="<%=context%>/ServletLogin" method="post" name="formvalidasuper" id="formvalidasuper" onsubmit="return valida_admin();">
+    <div class="input-group" id="inputText">
+        <center><h5><b>CLAVE DE CENTRO DE TRABAJO:</b></h5></center>
+        <input type="text" class="form-control" placeholder="EJEMPLO: 17ADG0001C" id="ct" name="ct" style="text-transform:uppercase;">
+    </div>
+    <div class="input-group" id="inputPassword">
+        <center><h5><b>CONTRASEÑA:</b></h5></center>
+        <input type="password" class="form-control" placeholder="EJEMPLO: 123456" id="contra" name="contra" style="text-transform:uppercase;">
+    </div>
+    <input type="hidden" name="valida" value="3">
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-primary btn-block">
+                <i class="glyphicon glyphicon-user"></i> 
+                INGRESAR
+            </button>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-danger btn-block" href="<%=context%>/index.jsp">
+                <i class="glyphicon glyphicon-refresh"></i> 
+                REGRESAR
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-offset-3">
+            <a class="btn btn-success btn-block" href="#success" data-toggle="modal">
+                <i class="glyphicon glyphicon-alert"></i> 
+                AYUDA
+            </a>
+        </div>        
+    </div>
+</form>

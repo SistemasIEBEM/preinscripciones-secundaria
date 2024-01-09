@@ -1,0 +1,85 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Classes;
+
+import Bean.BeanCurp;
+import Bean.BeanRenapo;
+import javax.xml.namespace.QName;
+import org.apache.axis2.AxisFault;
+import org.apache.axis2.addressing.EndpointReference;
+import org.apache.axis2.client.Options;
+import org.apache.axis2.rpc.client.RPCServiceClient;
+import org.dom4j.Attribute;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+
+/**
+ *
+ * @author Registro
+ */
+public class ConsultaCurp {
+
+    private BeanCurp datosCurp;
+
+    public BeanCurp getCurp(String Curp) throws AxisFault {
+        //System.setProperty("javax.net.ssl.trustStore", "C:\\renapoprod.keystore");
+        //System.setProperty("javax.net.ssl.trustStore", "/home/viper/renapoprod.keystore");
+        System.setProperty("javax.net.ssl.trustStore", "/home/subinfor/renapoprod.keystore");
+        RPCServiceClient serviceClient = new RPCServiceClient();
+        Options options = serviceClient.getOptions();
+        EndpointReference targetEPR = new EndpointReference("https://201.175.34.121/WebServicesConsulta/services/ConsultaPorCurpService");
+        options.setTo(targetEPR);
+        BeanRenapo datos = new BeanRenapo();
+        datos.setTipoTransaccion(1);
+        datos.setUsuario("WS6770388");
+        datos.setPassword("JORA688");
+        //datos.setDireccionIp("192.168.0.4");
+        //datos.setDireccionIp("172.16.22.95");
+        datos.setDireccionIp("172.16.20.61");
+        //datos.setDireccionIp("201.161.100.142");
+        datos.setCveCurp(Curp);
+        datos.setCveEntidadEmisora("1");
+        QName opSetAlta = new QName("http://services.wserv.ecurp.dgti.segob.gob.mx", "consultarPorCurp"); //urn:ConsultaCurpService
+        Object[] altaServiceArgs = new Object[]{datos};
+        Class<?>[] returnTypes = new Class[]{String.class};
+        Object[] response = serviceClient.invokeBlocking(opSetAlta,
+                altaServiceArgs, returnTypes);
+        String result = (String) response[0];
+        QName optGetConfirm = new QName("http://services.wserv.ecurp.dgti.segob.gob.mx", "getConfirm");
+        Object[] opGetConfirmArgs = new Object[]{getSessionID(result), "OK"};
+        serviceClient.invokeRobust(optGetConfirm, opGetConfirmArgs);
+        datosCurp = getData(result);
+        return datosCurp;
+    }
+
+    private static String getSessionID(String xml) {
+        String sessionID = "";
+        try {
+            Document doc = DocumentHelper.parseText(xml);
+            Attribute attr = doc.getRootElement().attribute("SessionID");
+            sessionID = attr.getText();
+        } catch (Exception ignoredException) {
+            ignoredException.getMessage();
+        }
+        return sessionID;
+    }
+
+    private static BeanCurp getData(String xml) {
+        BeanCurp propiedad = new BeanCurp();
+        try {
+            Document doc = DocumentHelper.parseText(xml);
+            propiedad.setCurp(doc.getRootElement().elementText("CURP"));
+            propiedad.setApaterno(doc.getRootElement().elementText("apellido1"));
+            propiedad.setAmaterno(doc.getRootElement().elementText("apellido2"));
+            propiedad.setNombre(doc.getRootElement().elementText("nombres"));
+
+        } catch (Exception ignoredException) {
+            ignoredException.getMessage();
+        }
+        return propiedad;
+    }
+
+}

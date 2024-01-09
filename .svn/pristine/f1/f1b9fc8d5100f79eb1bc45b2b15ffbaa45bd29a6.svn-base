@@ -1,0 +1,55 @@
+<!-- Footer 1-->
+<footer id="footer-wrapper">
+    <div id="border-bottom"></div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-3 col-md-4 col-md-offset-0">
+                <p style="text-align:center;">
+                    <img src="<%=context%>/images/escudo_secretaria.png" class="img-responsive" id="logosec">
+                </p>
+            </div>
+            <!--<div class="col-lg-3 col-md-4 col-md-offset-1">
+            <p style="text-align:center;">
+                    <img src="<%=context%>/images/logoVision.png" class="img-responsive" id="logovision">
+            <p>
+            </div>-->
+            <div class="col-lg-3 col-md-4 col-md-offset-1">
+                <h4>Teléfonos:</h4>
+                <p><a title="Contactanos!"><i class="fa fa-phone"></i> (777) 317 34 52, 317 03 11, 102 01 12 ó 101 36 17</a></p>
+            </div>
+            <div class="col-lg-3 col-md-4 col-md-offset-2">
+                <h4>Redes Sociales:</h4>
+                <a href="https://www.facebook.com/IEBEMDirecci%C3%B3n-de-Planeaci%C3%B3n-Educativa-143152726037204"  target="_blank" title="Facebook" class="noline">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x"></i>
+                    </span>
+                    Facebook
+                </a>
+            </div>
+            <hr>
+            <div class="col-lg-12">
+                <p>
+                    Instituto de la Educaci&oacute;n B&aacute;sica del Estado de Morelos
+                    <br/>
+                    Subdirecci&oacute;n de Inform&aacute;tica
+                    <br/>
+                    Calle Nueva China, sin n&uacute;mero. Col. Lomas de Cort&eacute;s, Cuernavaca, Morelos. C.P. 62240.
+                    <br/>
+                    Copyright © 2018
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113386695-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-113386695-1');
+    </script>
+</footer>

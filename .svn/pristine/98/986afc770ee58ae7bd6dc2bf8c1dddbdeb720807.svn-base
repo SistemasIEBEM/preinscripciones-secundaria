@@ -1,0 +1,208 @@
+<%@page import="DaoImpl.FachadaPadres"%>
+<%@page import="Bean.BeanEscuela"%>
+<%@page import="java.util.Collection"%>
+<%@page import="java.util.Collection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <% String context = request.getContextPath();
+        String curp = request.getAttribute("curp") != null ? (String) request.getAttribute("curp") : null;
+        String nombre = request.getAttribute("nombre") != null ? (String) request.getAttribute("nombre") : null;
+        String paterno = request.getAttribute("paterno") != null ? (String) request.getAttribute("paterno") : null;
+        String materno = request.getAttribute("materno") != null ? (String) request.getAttribute("materno") : null;
+        String fecha_nac = request.getAttribute("fecha_nac") != null ? (String) request.getAttribute("fecha_nac") : null;
+        String sexo = request.getAttribute("sexo") != null ? (String) request.getAttribute("sexo") : null;
+        String edo_nac = request.getAttribute("edo_nac") != null ? (String) request.getAttribute("edo_nac") : null;
+        String grado = request.getAttribute("grado") != null ? (String) request.getAttribute("grado") : null;
+        String ct = request.getAttribute("ct") != null ? (String) request.getAttribute("ct") : null;
+        String Ct_nombre = request.getAttribute("Ct_nombre") != null ? (String) request.getAttribute("Ct_nombre") : null;
+        String Ct_direccion = request.getAttribute("Ct_direccion") != null ? (String) request.getAttribute("Ct_direccion") : null;
+        String Ct_turno = request.getAttribute("Ct_turno") != null ? (String) request.getAttribute("Ct_turno") : null;
+    %>
+    <head>
+        <title>PREINSCRIPCIONES 2017</title>
+        <link rel="shortcut icon" href="<%=context%>/images/iebem.ico">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <%@include file="snippets/generalcssjs.jsp"%>
+        <style type="text/css">
+            body {
+                overflow-x:hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header -->
+        <%@include file="header.jsp"%>
+        <div id="border-top"></div>
+        <!-- Index -->
+        <form class="form-signin" action="<%=context%>/ServletDatosPersonales" onsubmit="return valida()" method="post">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="row">     
+                        <div class="col-md-6">
+                            <div class="table-responsive">
+                                <div class="container centered">
+                                    <center>
+                                        <h3>DATOS DEL ASPIRANTE</h3>
+                                    </center>
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td style="font-weight:bold;">CURP:</td><td><%=curp%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">NOMBRE(S):</td><td><%=nombre%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">PRIMER APELLIDO:</td><td><%=paterno%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">SEGUNDO APELLIDO:</td><td><%=materno%></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="table-responsive">
+                                <div class="container centered">
+                                    <center>
+                                        <h3>DATOS DE LA ESCUELA</h3>
+                                    </center>
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td style="font-weight:bold;">CLAVE DE LA ESCUELA:</td><td><%=ct%></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="font-weight:bold;">NOMBRE:</td><td><%=Ct_nombre%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">DIRECCIÓN:</td><td><%=Ct_direccion%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">TURNO:</td><td><%=Ct_turno%></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <h3>
+                                <center>
+                                    OPCIONES PARA ELEGIR ESCUELA DESTINO
+                                </center>
+                            </h3>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-condensed">
+                                    <tr class="info">
+                                        <th>CT</th>               
+                                        <th>NOMBRE</th>    
+                                        <th>DIRECCION</th>
+                                        <th>MUNICIPIO</th>
+                                        <th>TURNO</th>               
+                                        <th>Seleccione</th>               
+                                    </tr>               
+                                    <%
+                                        Collection<BeanEscuela> listaCTS;
+                                        FachadaPadres muestra = new FachadaPadres();
+                                        listaCTS = muestra.getEscuelas(ct);
+                                        for (BeanEscuela unCt : listaCTS) {
+                                            if (unCt.getSeleccione().equals("VACANTE")) {
+                                    %>    
+                                    <tr>                                                        
+                                        <td><%=unCt.getCt()%></td>                
+                                        <td><%=unCt.getNombre()%></td>                
+                                        <td><%=unCt.getDireccion()%></td>                                
+                                        <td><%=unCt.getMunicipio()%></td>                
+                                        <td><%=unCt.getTurno()%></td>                
+                                        <td style="text-align: center;"><input type="radio" name="ct_registro" id="ct_registro"  value="<%=unCt.getCt()%>"/></td>                
+                                    </tr>
+                                    <%
+                                } else {%>
+                                    <tr>
+                                        <td style="background-color: red; color: white;"><%=unCt.getCt()%></td>                
+                                        <td style="background-color: red; color: white;"><%=unCt.getNombre()%></td>                
+                                        <td style="background-color: red; color: white;"><%=unCt.getDireccion()%></td>                                
+                                        <td style="background-color: red; color: white;"><%=unCt.getMunicipio()%></td>                
+                                        <td style="background-color: red; color: white;"><%=unCt.getTurno()%></td>    
+                                        <td style="background-color: red; color: white; alignment-adjust: central;">SIN LUGARES DISPONIBLES</td>
+                                    </tr>
+                                    <%    }
+                                        }
+                                    %>
+                                </table>  
+                            </div>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <div class="alert alert-success alert-dismissible fade in" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button> 
+                                <h4>Si los datos son correctos haga clic en el botón "PRE-INSCRIBIR", si no son correctos haga clic en el botón "REGRESAR".</h4>                            
+                            </div>
+                            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button> 
+                                <h4>Una vez presionado el botón "PRE-INSCRIBIR" el alumno queda pre inscrito en el sistema.</h4>                            
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="col-md-6">
+                                <button id="botonPre" class="btn btn-primary" name="botonPre" type="submit">
+                                    <i class="glyphicon glyphicon-save"></i> 
+                                    PRE-INSCRIBIR
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-danger" type="reset" id="botonPre" onclick="location.href = 'index.jsp';">
+                                    <i class="glyphicon glyphicon-refresh"></i> 
+                                    REGRESAR
+                                </button>
+                            </div>
+                        </div>
+                        <input type="hidden" id="curp" name="curp" value="<%=curp%>" />
+                        <input type="hidden" id="paterno" name="paterno" value="<%=paterno%>" />
+                        <input type="hidden" id="materno" name="materno" value="<%=materno%>" />
+                        <input type="hidden" id="nombre" name="nombre" value="<%=nombre%>" />
+                        <input type="hidden" id="fechaNac" name="fechaNac" value="<%=fecha_nac%>" />
+                        <input type="hidden" id="sexo" name="sexo" value="<%=sexo%>" />
+                        <input type="hidden" id="edonac" name="edonac" value="<%=edo_nac%>" />
+                        <input type="hidden" id="ct" name="ct" value="<%=ct%>" />
+                        <input type="hidden" id="grado" name="grado" value="<%=grado%>" />
+                        <input type="hidden" id="modo" name="modo" value="1" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+</form>
+<!-- Footer -->
+<%@include file="footer.jsp" %>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#skel-layers-visibleWrapper').remove();
+    });
+</script>
+<script type="text/javascript">
+    function valida() {
+        opciones = document.getElementsByName("ct_registro");
+        var seleccionado = false;
+        for (var i = 0; i < opciones.length; i++) {
+            if (opciones[i].checked) {
+                seleccionado = true;
+                break;
+            }
+        }
+        if (!seleccionado) {
+            alert("Debe seleccionar  una clave de escuela valida");
+            document.getElementById('ct_registro').focus();
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<%-- 
+    Document   : ayuda2
+    Created on : 10-ene-2017, 8:37:39
+    Author     : David Costet
+--%>
+
+<div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-header-success">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4><i class="glyphicon glyphicon-pushpin"></i> Dudas acerca del sistema.</h4>
+            </div>
+            <div class="modal-body">
+                <p>La clave de Centro de Trabajo se conforma de: 
+                    <b>17-(3 LETRAS)-(4 NÚMEROS)-(1 LETRA)</b>
+                </p>
+                <br>
+              <p>Para comenzar capture la clave de su centro de trabajo (CCT), la contraseña que se proporciono y de clic en el botón 'INGRESAR'.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Modal -->

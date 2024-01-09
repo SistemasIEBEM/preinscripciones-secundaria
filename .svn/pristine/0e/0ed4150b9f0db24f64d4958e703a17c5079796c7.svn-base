@@ -1,0 +1,248 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <%
+        HttpSession sesion = request.getSession();
+        String nombre = (String) sesion.getAttribute("usuario");
+        if (sesion.getAttribute("usuario") == null) {
+            response.sendRedirect("logindir.jsp");
+        }
+        String context = request.getContextPath();
+        String grado = null;
+        String curp = request.getAttribute("curp") != null ? (String) request.getAttribute("curp") : null;
+        String nombre1 = request.getAttribute("nombre") != null ? (String) request.getAttribute("nombre") : null;
+        String paterno = request.getAttribute("paterno") != null ? (String) request.getAttribute("paterno") : null;
+        String materno = request.getAttribute("materno") != null ? (String) request.getAttribute("materno") : null;
+        String ct = request.getAttribute("ct") != null ? (String) request.getAttribute("ct") : null;
+        String Ct_nombre = request.getAttribute("Ct_nombre") != null ? (String) request.getAttribute("Ct_nombre") : null;
+        String Ct_direccion = request.getAttribute("Ct_direccion") != null ? (String) request.getAttribute("Ct_direccion") : null;
+        String Ct_turno = request.getAttribute("Ct_turno") != null ? (String) request.getAttribute("Ct_turno") : null;
+        String fecha_nac = "20" + curp.substring(4, 6) + "-" + curp.substring(6, 8) + "-" + curp.substring(8, 10);
+        String sexo = curp.substring(10, 11);
+        String edo_nac = curp.substring(11, 13);
+        switch (Integer.parseInt(curp.substring(4, 6))) {
+            case 12:
+                grado = "1";
+                break;
+            case 11:
+                grado = "1";
+                break;
+            case 10:
+                grado = "1";
+                break;
+            case 9:
+                grado = "1";
+                break;
+            
+        }
+    %>
+    <head>
+        <title>PREINSCRIPCIONES 2017</title>
+        <link rel="shortcut icon" href="<%=context%>/images/iebem.ico">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <%@include file="snippets/generalcssjs.jsp"%>
+        <script src="<%=context%>/js/funciones/validar_campos.js"></script>
+        <script src="<%=context%>/js/funciones/botonAtras.js"></script>
+        <style type="text/css">
+            body {
+                overflow-x:hidden;
+            }
+        </style>
+        <script>
+            document.onkeydown = function (e) {
+                if (e.keyCode === 116) {
+                    return false;
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <!-- Header -->
+        <%@include file="header.jsp"%>
+        <div id="border-top"></div>
+        <!-- Index -->
+        <form class="form-signin" action="<%=context%>/ServletProcDatosPreinscribirDir" method="post" onsubmit="return validacion()">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="row">     
+                        <div class="col-md-6">
+                            <div class="table-responsive">
+                                <div class="container centered">
+                                    <center>
+                                        <h3>DATOS DEL ASPIRANTE</h3>
+                                    </center>
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td style="font-weight:bold;">CURP:</td><td><%=curp%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">NOMBRE(S):</td><td><%=nombre1%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">PRIMER APELLIDO:</td><td><%=paterno%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">SEGUNDO APELLIDO:</td><td><%=materno%></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="table-responsive">
+                                <div class="container centered">
+                                    <center>
+                                        <h3>DATOS DE LA ESCUELA</h3>
+                                    </center>
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td style="font-weight:bold;">CLAVE DE LA ESCUELA:</td><td><%=ct%></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="font-weight:bold;">NOMBRE:</td><td><%=Ct_nombre%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">DIRECCIÓN:</td><td><%=Ct_direccion%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">TURNO:</td><td><%=Ct_turno%></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight:bold;">GRADO:</td><td><%=grado%></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <center>
+                                <h1 style="font-size: 12px; font-style: italic; font-weight:bold;">
+                                    "La informaci&oacute;n que usted nos proporciona, ser&aacute; tratada bajo estricto
+                                    apego a lo establecido en la Ley de Informaci&oacute;n P&uacute;blica, Estad&iacute;stica 
+                                    y Protecci&oacute;n de Datos Personales del Estado de Morelos".
+                                </h1>
+                                <h1 style="font-size: 12px; font-style: italic; font-weight:bold;">
+                                    "Los campos con asteríscos(*) son obligatorios de llenar".
+                                </h1>
+                            </center>
+                            <div class="table-responsive">
+                                <table class="table table-condensed">
+                                    <legend>
+                                        <strong>
+                                            <center>Datos Personales</center>
+                                        </strong>
+                                    </legend>
+                                    <tr>
+                                        <td style="font-weight:bold; width:200px">Domicilio:<font color="red">*</font></td>
+                                        <td>
+                                            <input id="domicilio" name="domicilio" size="67" onKeyUp="this.value = this.value.toUpperCase()" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold; width:200px">Municipio:<font color="red">*</font></td>
+                                        <td>
+                                            <select id="municipio" name="municipio" class="form-control">
+                                                <option value="00">Seleccione un municipio</option>
+                                                <option value="Amacuzac">Amacuzac</option>
+                                                <option value="Atlatlahucan">Atlatlahucan</option>
+                                                <option value="Axochiapan">Axochiapan</option>
+                                                <option value="Ayala">Ayala</option>
+                                                <option value="Coatlan">Coatl&aacute;n del R&iacute;o</option>
+                                                <option value="Cuautla">Cuautla</option>
+                                                <option value="Cuernavaca">Cuernavaca</option>
+                                                <option value="Emiliano Zapata">Emiliano Zapata</option>
+                                                <option value="Huitzilac">Huitzilac</option>
+                                                <option value="Jantetelco">Jantetelco</option>
+                                                <option value="Jiutepec">Jiutepec</option>
+                                                <option value="Jojutla">Jojutla</option>
+                                                <option value="Jonacatepec">Jonacatepec</option>
+                                                <option value="Mazatepec">Mazatepec</option>
+                                                <option value="Miacatlan">Miacatl&aacute;n</option>
+                                                <option value="Ocuituco">Ocuituco</option>
+                                                <option value="Puente de Ixtla">Puente de Ixtla</option>
+                                                <option value="Temixco">Temixco</option>
+                                                <option value="Temoac">Temoac</option>
+                                                <option value="Tepalcingo">Tepalcingo</option>
+                                                <option value="Tepoztlan">Tepoztl&aacute;n</option>
+                                                <option value="Tetecala">Tetecala</option>
+                                                <option value="Tetela del Volcan">Tetela del Volc&aacute;n</option>
+                                                <option value="Tlalnepantla">Tlalnepantla</option>
+                                                <option value="Tlaltizapan">Tlaltizap&aacute;n</option>
+                                                <option value="Tlaquiltenango">Tlaquiltenango</option>
+                                                <option value="Tlayacapan">Tlayacapan</option>
+                                                <option value="Totolapan">Totolapan</option>
+                                                <option value="Xochitepec">Xochitepec</option>
+                                                <option value="Yautepec">Yautepec</option>
+                                                <option value="Yecapixtla">Yecapixtla</option>
+                                                <option value="Zacatepec">Zacatepec de Hidalgo</option>
+                                                <option value="Zacualpan">Zacualpan</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold; width:200px">Nombre del padre ó tutor:<font color="red">*</font></td>
+                                        <td>
+                                            <input id="tutor" name="tutor" size="67" onKeyUp="this.value = this.value.toUpperCase()" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold; width:200px">Correo de contacto:</td>
+                                        <td>
+                                            <input id="correo" name="correo" size="67" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold; width:200px">Telefono:</td>
+                                        <td>
+                                            <input id="telefono" name="telefono" size="16" maxlength="10" onkeypress="ValidaSoloNumeros()" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="curp" name="curp" value="<%=curp%>" />
+                    <input type="hidden" id="paterno" name="paterno" value="<%=paterno%>" />
+                    <input type="hidden" id="materno" name="materno" value="<%=materno%>" />
+                    <input type="hidden" id="nombre" name="nombre" value="<%=nombre1%>" />
+                    <input type="hidden" id="sexo" name="sexo" value="<%=sexo%>" />
+                    <input type="hidden" id="fecha_nac" name="fecha_nac" value="<%=fecha_nac%>" />
+                    <input type="hidden" id="edo_nac" name="edo_nac" value="<%=edo_nac%>" />
+                    <input type="hidden" id="grado" name="grado" value="<%=grado%>" />
+                    <input type="hidden" id="ct" name="ct" value="<%=nombre%>" />
+                    <div class="col-lg-12">
+                        <div class="col-md-6">
+                            <button id="botonPre" class="btn btn-primary" name="botonPre" type="submit">
+                                <i class="glyphicon glyphicon-save"></i> 
+                                PRE-INSCRIBIR
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-danger" type="reset" id="botonPre" onclick="location.href = 'preinscribirDir.jsp';">
+                                <i class="glyphicon glyphicon-refresh"></i> 
+                                REGRESAR
+                            </button>
+                        </div>
+                    </div>
+                    <input type="hidden" id="curp" name="curp" value="<%=curp%>" />                            
+                </div>
+            </div>
+        </form>
+        <!-- Footer -->
+        <%@include file="footer.jsp" %>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#skel-layers-visibleWrapper').remove();
+            });
+        </script>
+        <script type="text/javascript">
+            function ValidaSoloNumeros() {
+                if ((event.keyCode < 48) || (event.keyCode > 57))
+                    event.returnValue = false;
+            }
+        </script>
+    </body>
+</html>

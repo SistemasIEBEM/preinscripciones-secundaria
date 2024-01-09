@@ -1,0 +1,20 @@
+<!-- Styles & Scripts -->
+<!--[if lte IE 8]><script src="<%=context%>/ie/html5shiv.js"></script><![endif]-->
+<script src="<%=context%>/js/jquery-1.11.0.min.js"></script>
+<script src="<%=context%>/js/jquery.dropotron.min.js"></script>
+<script src="<%=context%>/js/skel.min.js"></script>
+<script src="<%=context%>/js/skel-layers.min.js"></script>
+<script src="<%=context%>/js/init.js"></script>
+<noscript>
+<link rel="stylesheet" href="<%=context%>/css/skel.css" />
+<link rel="stylesheet" href="<%=context%>/css/style.css" />
+<link rel="stylesheet" href="<%=context%>/css/style-desktop.css" />
+</noscript>
+<!--[if lte IE 8]><link rel="stylesheet" href="<%=context%>/ie/v8.css" /><![endif]-->
+<link rel="stylesheet" href="<%=context%>/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=context%>/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%=context%>/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="<%=context%>/css/dataTables.bootstrap.min.css"/>
+<script src="<%=context%>/js/jquery.dataTables.min.js"></script>
+<script src="<%=context%>/js/dataTables.bootstrap.min.js"></script>
+<script src="<%=context%>/js/bootstrap.min.js"></script>

@@ -1,0 +1,6 @@
+driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+url=jdbc:sqlserver://172.16.20.51;databaseName=preinscripciones_prim2018;user=sa;password=samorelos*1;
+manejador=com.microsoft.sqlserver.jdbc.SQLServerDriver
+cadenaconexion=jdbc:sqlserver://172.16.20.51;databaseName=preinscripciones_prim2018;user=sa;password=samorelos*1;
+usuario=sa  
+clave=samorelos*1

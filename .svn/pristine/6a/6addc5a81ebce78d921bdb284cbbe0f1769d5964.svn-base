@@ -1,0 +1,248 @@
+<%-- 
+    Document   : datosalumnos_sincurp
+    Created on : 12/01/2017, 11:38:57 AM
+    Author     : Registro
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <%
+        String context = request.getContextPath();
+        HttpSession sesion = request.getSession();
+        String nombre = (String) sesion.getAttribute("usuario");
+        if (sesion.getAttribute("usuario") == null) {
+            response.sendRedirect("menudir.jsp");
+        }
+    %>   
+    <head>
+        <title>PREINSCRIPCIONES 2017</title>
+        <link rel="shortcut icon" href="<%=context%>/images/iebem.ico">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <%@include file="snippets/generalcssjs.jsp"%>
+        <script src="<%=context%>/js/funciones/validar_campos_dir.js"></script>
+        <script src="<%=context%>/js/funciones/botonAtras.js"></script>
+        <style type="text/css">
+            body {
+                overflow-x:hidden;
+            }
+        </style>
+        <script>
+            document.onkeydown = function (e) {
+                if (e.keyCode === 116) {
+                    return false;
+                }
+            };
+        </script>
+    </head>
+    <body onload="nobackbutton();">
+        <!-- Header -->
+        <%@include file="header.jsp"%>
+        <div id="border-top"></div>
+        <!-- Index -->
+        <form class="form-signin" action="<%=context%>/ServletPreinscribirSinCurp" method="post" onsubmit="return validaciondir()">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="row">                      
+                        <div class="col-xs-12">
+                            <center>
+                                <h1 style="font-size: 16px; font-weight:bold;">PREINSCRIPCION DE ASPIRANTES QUE NO CUENTAN CON CURP</h1>
+                                <h1 style="font-size: 12px; font-style: italic; font-weight:bold;">
+                                    "La informaci&oacute;n que usted nos proporciona, ser&aacute; tratada bajo estricto
+                                    apego a lo establecido en la Ley de Informaci&oacute;n P&uacute;blica, Estad&iacute;stica 
+                                    y Protecci&oacute;n de Datos Personales del Estado de Morelos".
+                                </h1>
+                                <h1 style="font-size: 12px; font-style: italic; font-weight:bold;">
+                                    "Los campos con asteríscos(*) son obligatorios de llenar".
+                                </h1>
+                            </center>                            
+                            <div class="table-responsive">
+                                <table class="table table-condensed">
+                                    <legend>
+                                        <strong>
+                                            <center>Datos Personales</center>
+                                        </strong>
+                                    </legend>
+                                    <tr>
+                                        <td style="font-weight:bold; width:200px">NOMBRE(S):<font color="red">*</font></td>
+                                        <td>
+                                            <input name="nombre" id="nombre" type="text" size="60" maxlength="40" onKeyUp="this.value = this.value.toUpperCase()" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold;">PRIMER APELLIDO:<font color="red">*</font></td>
+                                        <td>
+                                            <input name="paterno" id="paterno" type="text" size="60" maxlength="40" onKeyUp="this.value = this.value.toUpperCase()" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold;">SEGUNDO APELLIDO:</td>
+                                        <td>
+                                            <input name="materno" id="materno" type="text" size="60" maxlength="40" onKeyUp="this.value = this.value.toUpperCase()" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold;">SEXO:<font color="red">*</font></td>
+                                        <td>
+                                            <select id="sexo" name="sexo" class="form-control">
+                                                <option value="00">Seleccione un sexo</option>
+                                                <option value="M">MUJER</option>
+                                                <option value="H">HOMBRE</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold;">FECHA DE NACIMIENTO:<font color="red">*</font></td>
+                                        <td> 
+                                            Año ej.2011 <input type="text" id="anio" name="anio" maxlength="4" size="4" onkeypress="ValidaSoloNumeros()" class="form-control"/> 
+                                            Mes ej.03 <input type="text" id="mes" name="mes" maxlength="2" size="2" onkeypress="ValidaSoloNumeros()" class="form-control"/> 
+                                            Día ej. 03 <input type="text" id="dia" name="dia" maxlength="2" size="2" onkeypress="ValidaSoloNumeros()" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold;">ESTADO DE NACIMIENTO:<font color="red">*</font></td><td><select id="edonac" name="edonac" class="form-control">
+                                                <option value='00'>Seleccione una entidad de nacimiento</option>
+                                                <option value='BC'>BAJA CALIFORNIA</option>
+                                                <option value='BS'>BAJA CALIFORNIA SUR</option>
+                                                <option value='CC'>CAMPECHE</option>
+                                                <option value='CS'>CHIAPAS</option>
+                                                <option value='CH'>CHIHUAHUA</option>
+                                                <option value='CL'>COAHUILA</option>
+                                                <option value='CM'>COLIMA</option>
+                                                <option value='DF'>DISTRITO FEDERAL</option>
+                                                <option value='DG'>DURANGO</option>
+                                                <option value='GT'>GUANAJUATO</option>
+                                                <option value='GR'>GUERRERO</option>
+                                                <option value='HG'>HIDALGO</option>
+                                                <option value='JC'>JALISCO</option>
+                                                <option value='MC'>ESTADO DE M&Eacute;XICO</option>
+                                                <option value='MN'>MICHOAC&Aacute;N</option>
+                                                <option value='MS'>MORELOS</option>
+                                                <option value='NT'>NAYARIT</option>
+                                                <option value='NL'>NUEVO LE&Oacute;N</option>
+                                                <option value='OC'>OAXACA</option>
+                                                <option value='PL'>PUEBLA</option>
+                                                <option value='QT'>QUER&Eacute;TARO</option>
+                                                <option value='QR'>QUINTANA ROO</option>
+                                                <option value='SP'>SAN LUIS POTOS&Iacute;</option>
+                                                <option value='SL'>SINALOA</option>
+                                                <option value='SR'>SONORA</option>
+                                                <option value='TC'>TABASCO</option>
+                                                <option value='TS'>TAMAULIPAS</option>
+                                                <option value='TL'>TLAXCALA</option>
+                                                <option value='VZ'>VERACRUZ</option>
+                                                <option value='YN'>YUCAT&Aacute;N</option>
+                                                <option value='ZS'>ZACATECAS</option>
+                                                <option value='NE'>NACIDO EN EL EXTRANJERO</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold; width:200px">DOMICILIO:<font color="red">*</font></td>
+                                        <td>
+                                            <input id="domicilio" name="domicilio" size="67" onKeyUp="this.value = this.value.toUpperCase()" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold; width:200px">MUNICIPIO:<font color="red">*</font></td>
+                                        <td>
+                                            <select id="municipio" name="municipio" class="form-control">
+                                                <option value="00">seleccione un municipio</option>
+                                                <option value="Amacuzac">AMACUZAC</option>
+                                                <option value="Atlatlahucan">ATLATLAHUCAN</option>
+                                                <option value="Axochiapan">AXOCHIAPAN</option>
+                                                <option value="Ayala">AYALA</option>
+                                                <option value="Coatlan">COATLÁN DEL RÍO</option>
+                                                <option value="Cuautla">CUAUTLA</option>
+                                                <option value="Cuernavaca">CUERNAVACA</option>
+                                                <option value="Emiliano Zapata">EMILIANO ZAPATA</option>
+                                                <option value="Huitzilac">HUITZILAC</option>
+                                                <option value="Jantetelco">JANTETELCO</option>
+                                                <option value="Jiutepec">JIUTEPEC</option>
+                                                <option value="Jojutla">JOJUTLA</option>
+                                                <option value="Jonacatepec">JONACATEPEC</option>
+                                                <option value="Mazatepec">MAZATEPEC</option>
+                                                <option value="Miacatlan">MIACATLAN</option>
+                                                <option value="Ocuituco">OCUITUCO</option>
+                                                <option value="Puente de Ixtla">PUENTE DE IXTLA</option>
+                                                <option value="Temixco">TEMIXCO</option>
+                                                <option value="Temoac">TEMOAC</option>
+                                                <option value="Tepalcingo">TEPALCINGO</option>
+                                                <option value="Tepoztlan">TEPOZTLÁN</option>
+                                                <option value="Tetecala">TETECALA</option>
+                                                <option value="Tetela del Volcan">TETELA DEL VOLCÁN</option>
+                                                <option value="Tlalnepantla">TLALNEPANTLA</option>
+                                                <option value="Tlaltizapan">TLALTIZAPÁN</option>
+                                                <option value="Tlaquiltenango">TLAQUILTENANGO</option>
+                                                <option value="Tlayacapan">TLAYACAPAN</option>
+                                                <option value="Totolapan">TOTOLAPAN</option>
+                                                <option value="Xochitepec">XOCHITEPEC</option>
+                                                <option value="Yautepec">YAUTEPEC</option>
+                                                <option value="Yecapixtla">YECAPIXTLA</option>
+                                                <option value="Zacatepec">ZACATEPEC DE HIDALGO</option>
+                                                <option value="Zacualpan">ZACUALPAN</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold; width:200px">NOMBRE DEL PADRE Ó TUTOR:<font color="red">*</font></td>
+                                        <td>
+                                            <input id="tutor" name="tutor" size="67" onKeyUp="this.value = this.value.toUpperCase()" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold; width:200px">CORREO DE CONTACTO:</td>
+                                        <td>
+                                            <input id="correo" name="correo" size="67" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold; width:200px">TELEFONO:</td>
+                                        <td>
+                                            <input id="telefono" name="telefono" size="16" maxlength="10" onkeypress="ValidaSoloNumeros()" class="form-control"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" id="ct" name="ct" value="<%=nombre%>" />
+                            </div>
+                            <hr>
+                            <div class="col-lg-12">
+                                <div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-primary" type="submit" id="botonPre">
+                                            <i class="glyphicon glyphicon-save"></i> 
+                                            GUARDAR
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-danger" type="reset" id="botonPre" onclick="location.href = 'preinscribirDir.jsp';">
+                                            <i class="glyphicon glyphicon-refresh"></i> 
+                                            REGRESAR
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <input type="hidden" id="ct" name="ct" value="<%=nombre%>"/>
+    </form>
+    <!-- Footer -->
+    <%@include file="footer.jsp" %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#skel-layers-visibleWrapper').remove();
+        });
+    </script>
+    <script type="text/javascript">
+        function ValidaSoloNumeros() {
+            if ((event.keyCode < 48) || (event.keyCode > 57))
+                event.returnValue = false;
+        }
+    </script>
+</body>
+</html>

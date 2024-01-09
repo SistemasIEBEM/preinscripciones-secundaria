@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="consultasWS" resourceRoot="" soapui-version="4.5.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="ConsultaPorCurpServiceSoap11Binding" type="wsdl" bindingName="{http://services.wserv.ecurp.dgti.segob.gob.mx}ConsultaPorCurpServiceSoap11Binding" soapVersion="1_1" anonymous="optional" definition="https://201.175.34.121/WebServicesConsulta/services/ConsultaPorCurpService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://201.175.34.121:-1/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpSoap11Endpoint/</con:endpoint><con:endpoint>https://201.175.34.121:8443/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpsSoap11Endpoint/</con:endpoint></con:endpoints><con:operation isOneWay="false" action="urn:consultarPorCurp" name="consultarPorCurp" bindingOperationName="consultarPorCurp" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://201.175.34.121:-1/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.wserv.ecurp.dgti.segob.gob.mx" xmlns:xsd="http://services.wserv.ecurp.dgti.segob.gob.mx/xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:consultarPorCurp>
+         <!--Optional:-->
+         <ser:datos>
+            <!--Optional:-->
+            <xsd:cveCurp>?</xsd:cveCurp>
+            <!--Optional:-->
+            <xsd:cveEntidadEmisora>?</xsd:cveEntidadEmisora>
+            <!--Optional:-->
+            <xsd:direccionIp>?</xsd:direccionIp>
+            <!--Optional:-->
+            <xsd:password>?</xsd:password>
+            <!--Optional:-->
+            <xsd:tipoTransaccion>?</xsd:tipoTransaccion>
+            <!--Optional:-->
+            <xsd:usuario>?</xsd:usuario>
+         </ser:datos>
+      </ser:consultarPorCurp>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:consultarPorCurp"/></con:call></con:operation><con:operation isOneWay="false" action="urn:getConfirm" name="getConfirm" bindingOperationName="getConfirm" type="One-Way" inputName="" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://201.175.34.121:-1/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.wserv.ecurp.dgti.segob.gob.mx">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getConfirm>
+         <!--Optional:-->
+         <ser:sessionID>?</ser:sessionID>
+         <!--Optional:-->
+         <ser:Mssg>?</ser:Mssg>
+      </ser:getConfirm>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:getConfirm"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="ConsultaPorCurpServiceSoap12Binding" type="wsdl" bindingName="{http://services.wserv.ecurp.dgti.segob.gob.mx}ConsultaPorCurpServiceSoap12Binding" soapVersion="1_2" anonymous="optional" definition="https://201.175.34.121/WebServicesConsulta/services/ConsultaPorCurpService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://201.175.34.121/WebServicesConsulta/services/ConsultaPorCurpService?wsdl"><con:part><con:url>https://201.175.34.121/WebServicesConsulta/services/ConsultaPorCurpService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://services.wserv.ecurp.dgti.segob.gob.mx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://services.wserv.ecurp.dgti.segob.gob.mx" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax23="http://services.wserv.ecurp.dgti.segob.gob.mx/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.wserv.ecurp.dgti.segob.gob.mx/xsd">
+      <xs:complexType name="DatosConsultaCurp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cveCurp" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="cveEntidadEmisora" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="direccionIp" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="tipoTransaccion" type="xs:int"/>
+          <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.wserv.ecurp.dgti.segob.gob.mx" xmlns:ax24="http://services.wserv.ecurp.dgti.segob.gob.mx/xsd">
+      <xs:import namespace="http://services.wserv.ecurp.dgti.segob.gob.mx/xsd"/>
+      <xs:element name="consultarPorCurp">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="datos" nillable="true" type="ax23:DatosConsultaCurp"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="consultarPorCurpResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getConfirm">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sessionID" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Mssg" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getConfirmRequest">
+    <wsdl:part name="parameters" element="ns:getConfirm"/>
+  </wsdl:message>
+  <wsdl:message name="consultarPorCurpRequest">
+    <wsdl:part name="parameters" element="ns:consultarPorCurp"/>
+  </wsdl:message>
+  <wsdl:message name="consultarPorCurpResponse">
+    <wsdl:part name="parameters" element="ns:consultarPorCurpResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ConsultaPorCurpServicePortType">
+    <wsdl:operation name="getConfirm">
+      <wsdl:input message="ns:getConfirmRequest" wsaw:Action="urn:getConfirm"/>
+    </wsdl:operation>
+    <wsdl:operation name="consultarPorCurp">
+      <wsdl:input message="ns:consultarPorCurpRequest" wsaw:Action="urn:consultarPorCurp"/>
+      <wsdl:output message="ns:consultarPorCurpResponse" wsaw:Action="urn:consultarPorCurpResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultaPorCurpServiceSoap11Binding" type="ns:ConsultaPorCurpServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getConfirm">
+      <soap:operation soapAction="urn:getConfirm" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultarPorCurp">
+      <soap:operation soapAction="urn:consultarPorCurp" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ConsultaPorCurpServiceSoap12Binding" type="ns:ConsultaPorCurpServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getConfirm">
+      <soap12:operation soapAction="urn:getConfirm" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultarPorCurp">
+      <soap12:operation soapAction="urn:consultarPorCurp" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ConsultaPorCurpServiceHttpBinding" type="ns:ConsultaPorCurpServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="getConfirm">
+      <http:operation location="getConfirm"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultarPorCurp">
+      <http:operation location="consultarPorCurp"/>
+      <wsdl:input>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="application/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsultaPorCurpService">
+    <wsdl:port name="ConsultaPorCurpServiceHttpSoap11Endpoint" binding="ns:ConsultaPorCurpServiceSoap11Binding">
+      <soap:address location="http://201.175.34.121:-1/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="ConsultaPorCurpServiceHttpsSoap11Endpoint" binding="ns:ConsultaPorCurpServiceSoap11Binding">
+      <soap:address location="https://201.175.34.121:8443/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpsSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="ConsultaPorCurpServiceHttpsSoap12Endpoint" binding="ns:ConsultaPorCurpServiceSoap12Binding">
+      <soap12:address location="https://201.175.34.121:8443/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpsSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="ConsultaPorCurpServiceHttpSoap12Endpoint" binding="ns:ConsultaPorCurpServiceSoap12Binding">
+      <soap12:address location="http://201.175.34.121:-1/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="ConsultaPorCurpServiceHttpEndpoint" binding="ns:ConsultaPorCurpServiceHttpBinding">
+      <http:address location="http://201.175.34.121:-1/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpEndpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="ConsultaPorCurpServiceHttpsEndpoint" binding="ns:ConsultaPorCurpServiceHttpBinding">
+      <http:address location="https://201.175.34.121:8443/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpsEndpoint/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://201.175.34.121/WebServicesConsulta/services/ConsultaPorCurpService</con:endpoint><con:endpoint>http://201.175.34.121:-1/WebServicesConsulta/services/ConsultaPorCurpService.ConsultaPorCurpServiceHttpSoap12Endpoint/</con:endpoint></con:endpoints><con:operation isOneWay="false" action="urn:consultarPorCurp" name="consultarPorCurp" bindingOperationName="consultarPorCurp" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://201.175.34.121/WebServicesConsulta/services/ConsultaPorCurpService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://services.wserv.ecurp.dgti.segob.gob.mx" xmlns:xsd="http://services.wserv.ecurp.dgti.segob.gob.mx/xsd">
+   <soap:Header/>
+   <soap:Body>
+      <ser:consultarPorCurp>
+         <!--Optional:-->
+         <ser:datos>
+            <!--Optional:-->
+            <xsd:cveCurp>SASO740909HDFNNS08</xsd:cveCurp>
+            <!--Optional:-->
+            <xsd:cveEntidadEmisora>04001</xsd:cveEntidadEmisora>
+            <!--Optional:-->
+            <xsd:direccionIp>0.0.0.0</xsd:direccionIp>
+            <!--Optional:-->
+            <xsd:password>wsgestion2011</xsd:password>
+            <!--Optional:-->
+            <xsd:tipoTransaccion>1</xsd:tipoTransaccion>
+            <!--Optional:-->
+            <xsd:usuario>wsgestion</xsd:usuario>
+         </ser:datos>
+      </ser:consultarPorCurp>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:consultarPorCurp"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="urn:getConfirm" name="getConfirm" bindingOperationName="getConfirm" type="One-Way" inputName="" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://201.175.34.121/WebServicesConsulta/services/ConsultaPorCurpService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://services.wserv.ecurp.dgti.segob.gob.mx">
+   <soap:Header/>
+   <soap:Body>
+      <ser:getConfirm>
+         <!--Optional:-->
+         <ser:sessionID>?</ser:sessionID>
+         <!--Optional:-->
+         <ser:Mssg>?</ser:Mssg>
+      </ser:getConfirm>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:getConfirm"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

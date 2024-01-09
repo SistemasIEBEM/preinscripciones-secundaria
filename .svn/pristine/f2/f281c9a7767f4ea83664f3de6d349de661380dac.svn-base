@@ -1,0 +1,13 @@
+<!-- Header -->
+<div id="site">
+    <div id="header-wrapper">
+        <header id="header" class="container">
+            <div id="logo">
+                <div id="logo-sipreeb"></div>
+            </div>
+            <nav id="nav">
+                <div id="logo-iebem"></div>
+            </nav>
+        </header>
+    </div>
+</div>

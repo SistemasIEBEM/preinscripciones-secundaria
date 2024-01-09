@@ -1,0 +1,82 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <% String context = request.getContextPath();%>
+    <head>
+        <title>PREINSCRIPCIONES 2018</title>
+        <link rel="shortcut icon" href="<%=context%>/images/iebem.ico">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <%@include file="snippets/generalcssjs.jsp"%>
+        <style type="text/css">
+            body {
+                overflow-x:hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header -->
+        <%@include file="header.jsp"%>
+        <div id="border-top"></div>
+        <!-- Index -->
+        <div class="jumbotron" id="slider">
+            <div class="container">
+                <center>
+                    <a href="<%=context%>/Listadoescuelas.jsp" class="blackboard">
+                        <p>PARA VER EL LISTADO DE ESCUELAS DISPONIBLES Y SU CLAVE DE CCT HAGA CLIC <span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span></p>
+                    </a>
+                    <a href="http://escolar.iebem.edu.mx/Preinscripciones2018.Preesco/consultaFolio.jsp" class="blackboard">
+                        <p>REIMPRESIÓN DE COMPROBANTES DE PREINSCRIPCIÓN DE PREESCOLAR <span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span></p>
+                    </a>
+                    <a href="<%=context%>/consultaFolio.jsp" class="blackboard">
+                        <p>IMPRESIÓN DE COMPROBANTES DE PREINSCRIPCIÓN DE PRIMARIA <span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span></p>
+                    </a>
+                </center>
+                <div class="row">                      
+                    <div class="col-lg-12">
+                        <div class="col-md-6">
+                            <div class="login login-container">
+                                <%@include file="peticion.jsp"%>                                                                           
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="login login-container">
+                                <button type="reset" class="btn btn-warning btn-block" onclick="location.href = '<%=context%>/loginsuper.jsp'">
+                                    <i class="glyphicon glyphicon-check"></i> 
+                                    ACCESO PARA SUPERVISORES DE PRIMARIA
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="login login-container">
+                                <a class="btn btn-danger btn-block" href="<%=context%>/logindir.jsp">
+                                    <i class="glyphicon glyphicon-book"></i> 
+                                    ACCESO PARA DIRECTORES DE PRIMARIA
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="login login-container">
+                                <a class="btn btn-info btn-block" href="http://escolar.iebem.edu.mx/Preinscripciones2018.Preesco/logindir.jsp">
+                                    <i class="glyphicon glyphicon-book"></i> 
+                                    ACCESO PARA DIRECTORES DE PREESCOLAR
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <%@include file="ayuda.jsp"%>     
+    <!-- Footer -->
+    <%@include file="footer.jsp" %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#skel-layers-visibleWrapper').remove();
+        });
+    </script>
+</body>
+</html>
