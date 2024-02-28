@@ -5,7 +5,7 @@
     <tr>
         <td style="font-weight:bold;">Nombre(s) completo del aspirante:</td>
         <td>
-            <%=nombre%> <%=paterno%> <%=materno%>
+            <%=nombre1%> <%=paterno%> <%=materno%>
         </td>
     </tr>
 </table>

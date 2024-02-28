@@ -70,7 +70,7 @@ public class ServletProcesaDatos extends HttpServlet {
             bandera = fachada.getBandera(curp);
             bandera2 = fachada.getBandera2(curp);
             if (bandera2.equals("1")) {
-                if (edad.equals("11") ||edad.equals("10") || edad.equals("09") || edad.equals("08") || edad.equals("07") || edad.equals("06") || bandera.equals("1")) {
+                if (edad.equals("12") ||edad.equals("11") || edad.equals("10") || edad.equals("09") || edad.equals("08") || edad.equals("07") || bandera.equals("1")) {
                     letras = fachada.LetrasDelDia();
                     if (letras != null || !(letras.equals(""))) {
                         String letraInicialCurp = curp.substring(0, 1);

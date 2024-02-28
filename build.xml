@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="Preinscripciones2022.Sec" default="default" basedir=".">
-    <description>Builds, tests, and runs the project Preinscripciones2022.Sec.</description>
+<project name="Preinscripciones2024.Sec" default="default" basedir=".">
+    <description>Builds, tests, and runs the project Preinscripciones2024.Sec.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

@@ -69,7 +69,7 @@ public class ConsultaCurp {
         String salida;
         String json = null;
         try {
-           URL url = new URL("https://wscurp.morelos.gob.mx/restful/curp.json?curp=" + curp + "&token=6af21d42-be7d-4d2e-b500-40f48d1d3a01");
+           URL url = new URL("https://curp.iebem.edu.mx/curp.json?curp="+curp);
             HttpsURLConnection  conn = (HttpsURLConnection ) url.openConnection();
             conn.setSSLSocketFactory(sc.getSocketFactory());
             conn.setRequestMethod("GET");

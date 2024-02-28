@@ -62,9 +62,12 @@ public class ServletPreinscribirSinCurp extends HttpServlet {
             /*intentamos preinscribir al alumno*/
             String curp = (String) request.getParameter("curp");
             String edad = curp.substring(4, 6);
-            if (edad.equals("11") || edad.equals("10") || edad.equals("09") || edad.equals("08") || edad.equals("07") || edad.equals("06") ) {
+            if (edad.equals("12") || edad.equals("11") || edad.equals("10") || edad.equals("09") || edad.equals("08") || edad.equals("07") ) {
                 int edad_permitida = Integer.parseInt(edad);
                 switch (edad_permitida) {
+                    case 12:
+                        grado = "1";
+                        break;
                     case 11:
                         grado = "1";
                         break;
@@ -77,11 +80,8 @@ public class ServletPreinscribirSinCurp extends HttpServlet {
                     case 8:
                         grado = "1";
                         break;
-                    case 7:
-                        grado = "1";
-                        break;
                         
-                    case 6:
+                    case 7:
                         grado = "1";
                         break;
                 }

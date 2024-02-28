@@ -23,6 +23,9 @@
         grado = "1";
         }
         switch (Integer.parseInt(curp.substring(4, 6))) {
+            case 12:
+                grado = "1";
+                break;
             case 11:
                 grado = "1";
                 break;
@@ -36,9 +39,6 @@
                 grado = "1";
                 break;
             case 7:
-                grado = "1";
-                break;
-            case 6:
                 grado = "1";
                 break;    
         }
