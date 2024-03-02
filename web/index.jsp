@@ -25,11 +25,11 @@
                     <a href="<%=context%>/Listadoescuelas.jsp" class="blackboard">
                         <p>PARA VER EL LISTADO DE ESCUELAS DISPONIBLES Y SU CLAVE DE CCT HAGA CLIC <span class="fas fa-clipboard" aria-hidden="true"></span></p>
                     </a>
-                    <a href="http://escolar.iebem.edu.mx/preescolar/consultaFolio.jsp" class="blackboard">
+                    <a href="http://escolar.iebem.edu.mx/Preinscripciones2024.Preesco/consultaFolio.jsp" class="blackboard">
                         <!--<a href="#" class="blackboard">-->
                         <p>REIMPRESIÓN DE COMPROBANTES DE PREINSCRIPCIÓN DE PREESCOLAR <span class="fas fa-clipboard" aria-hidden="true"></span></p>
                     </a>
-                    <a href="http://escolar.iebem.edu.mx/primaria/consultaFolio.jsp" class="blackboard">
+                    <a href="http://escolar.iebem.edu.mx/Preinscripciones2024.Prim/consultaFolio.jsp" class="blackboard">
                         <!--<a href="#" class="blackboard">-->
                         <p>REIMPRESIÓN DE COMPROBANTES DE PREINSCRIPCIÓN DE PRIMARIA <span class="fas fa-clipboard" aria-hidden="true"></span></p>
                     </a>
@@ -61,9 +61,9 @@
                                     </button>
                                     <ul class="dropdown-menu btn-block" aria-labelledby="btnGroupDrop1">
                                         <!--<li><a href="#">Preescolar</a></li>-->
-                                        <li><a class="dropdown-item" href="http://escolar.iebem.edu.mx/preescolar/logindir.jsp">Preescolar</a></li>
+                                        <li><a class="dropdown-item" href="http://escolar.iebem.edu.mx/Preinscripciones2024.Preesco/logindir.jsp">Preescolar</a></li>
                                         <!--<li><a href="#">Primaria</a></li>-->
-                                        <li><a class="dropdown-item" href="http://escolar.iebem.edu.mx/primaria/logindir.jsp">Primaria</a></li>
+                                        <li><a class="dropdown-item" href="http://escolar.iebem.edu.mx/Preinscripciones2024.Prim/logindir.jsp">Primaria</a></li>
                                         <li><a class="dropdown-item" href="<%=context%>/logindir.jsp">Secundaria</a></li>
                                     </ul>
                                 </div>
